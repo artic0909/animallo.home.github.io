@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animallo</title>
+
+  <link rel="icon" href="images/WebLogo.png" type="image/icon type">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* font-family: 'Poppins', sans-serif; */
+    }
+
+    html {
+      height: 200px !important;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #f9f9f9;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    ul {
+      margin-left: 30%;
+    }
+
+    .animallo {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      height: 100vh;
+    }
+
+    #hill1 {
+      z-index: -1;
+    }
+
+    #text {
+      position: absolute;
+      font-size: 6em;
+      color: #fff;
+      text-shadow: 4px 4px 8px black;
+      font-weight: bolder;
+    }
+
+    .animallo img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .sec2 {
+      font-family: 'Poppins', sans-serif;
+      line-height: 40px;
+      position: relative;
+      background-color: #003329;
+      padding: 30px;
+    }
+
+    .sec2 h2 {
+      font-size: 3em;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .sec2 p {
+      font-size: 1em;
+      color: #ffffff;
+      font-weight: 300;
+    }
+
+    /* ---------------------------------------- */
+    @media (max-width:435px) {
+      .footer {
+        display: flex;
+        /* justify-content: center; */
+        /* flex-wrap: wrap; */
+        justify-content: space-evenly;
+      }
+
+      .footer .subfoot a {
+        text-decoration: none;
+        background-color: #359381;
+        border-radius: 5px;
+        color: #f9f9f9;
+        box-shadow: 2px 2px 3px black;
+      }
+    }
+
+
+
+    .title-text {
+      text-align: center;
+      padding-bottom: 70px;
+    }
+
+    .title-text p {
+      margin: auto;
+      font-size: 20px;
+      color: #009688;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+    }
+
+    .title-text p::after {
+      content: '';
+      width: 50px;
+      height: 35px;
+      background: linear-gradient(#019587, #fff);
+      position: absolute;
+      top: -20px;
+      left: 0;
+      z-index: -1;
+      transform: rotate(10deg);
+      border-top-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+    }
+
+    .title-text h1 {
+      font-size: 50px;
+    }
+
+    #footer {
+      padding: 100px 0 20px;
+      background: #efefef;
+      position: relative;
+    }
+
+    .footer-row {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+
+    }
+
+    .footer-row .footer-left,
+    .footer-row .footer-right {
+      flex-basis: 45%;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .footer-row .footer-right {
+      text-align: right;
+    }
+
+    .footer-row h1 {
+      margin: 10px 0;
+    }
+
+    .footer-row p {
+      line-height: 35px;
+    }
+
+    .footer-row .footer-left i,
+    .footer-row .footer-right i {
+      font-size: 20px;
+      color: #009688;
+      margin: 10px;
+    }
+
+    .footer-img {
+      max-width: 370px;
+      opacity: 0.1;
+      position: absolute;
+      left: 50%;
+      top: 35%;
+      transform: translate(-50%, -50%);
+    }
+
+    .social-links {
+      text-align: center;
+    }
+
+    .social-links i {
+      height: 40px;
+      width: 40px;
+      font-size: 20px;
+      line-height: 40px;
+      border: 1px solid #009688;
+      margin: 40px 5px 0;
+      color: #009688;
+      cursor: pointer;
+      transition: .5s;
+    }
+
+    .social-links i:hover {
+      background-color: #009688;
+      color: #fff;
+      transform: translateY(-7px);
+    }
+
+    @media screen and (max-width:770px) {
+      .title-text h1 {
+        font-size: 35px;
+      }
+
+      .feature {
+        flex-basis: 100%;
+      }
+
+      .feature-img {
+        flex-basis: 100%;
+        /* margin: auto; */
+      }
+
+      .feature-img img {
+        width: 100%;
+        /* border-radius: 10px; */
+      }
+    }
+
+    @media (max-width:843px) {
+      .container2 .seg3 {
+
+        display: block;
+      }
+
+      .container2 .subseg2 form {
+        width: 320px;
+        margin-left: 20% !important;
+      }
+    }
+
+    #authImg {
+      transition: all .2s;
+    }
+
+    #authImg:hover {
+      transform: scale(1.1);
+    }
+
+    .col-9 {
+      line-height: normal;
+    }
+
+    .col-9 a i {
+      margin-left: 10px;
+      transition: all .2s;
+    }
+
+    .col-9 i:hover {
+      transform: scale(1.4);
+    }
+
+    .col-9 a i {
+      font-size: 20px;
+    }
+
+    #facebook i:hover {
+      background-color: rgb(9, 199, 252);
+      padding: 1px;
+      border-radius: 5px;
+    }
+
+    #insta i:hover {
+      background-color: rgb(237, 58, 88);
+      padding: 2px;
+      border-radius: 5px;
+    }
+
+    #linkedin i:hover {
+      background-color: blue;
+      padding: 2px;
+      border-radius: 5px;
+    }
+
+    #youtube i:hover {
+      background-color: red;
+      border-radius: 5px;
+      padding: 2px;
+    }
+
+    #dots{
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #dots li a {
+      font-size: 17px;
+      text-decoration: none;
+      color: white;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      top: 10%;
+    }
+
+    #dots li {
+      margin-top: 10px;
+      width: 400px;
+      line-height: normal;
+      border-radius: 15px;
+      padding: 6px;
+      text-align: center;
+      background-image: linear-gradient(to right, #294D4A, #629677);
+      position: relative;
+      right: 10px;
+    }
+
+    #dots li:hover {
+      background-image: linear-gradient(to right, #208070, #808a85);
+
+    }
+
+    #dotsdownpara {
+      font-size: 15px;
+    }
+
+    #sharebuttons button i {
+      transition: all .3s;
+    }
+
+    #sharebuttons button i:hover {
+      transform: scale(1.1);
+    }
+
+    .commentsPara {
+      line-height: 23px;
+    }
+
+    #publishButton {
+      margin-top: -10px;
+      font-weight: bold;
+      transition: all .3s;
+      height: 50px;
+      width: 90px;
+      font-size: 17px !important;
+    }
+
+    #publishButton:hover {
+      font-size: 15px !important;
+      font-weight: bolder !important;
+    }
+
+    .form-check {
+      line-height: 23px;
+    }
+
+    #check {
+      font-weight: bold;
+    }
+
+
+
+
+
+
+    /* responsive for font sliding */
+
+    @media (min-width:1023px) and (max-width:1265px) {
+      .animallo {
+        height: 87vh;
+        background-image: url("images/backkBanner.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+
+    @media (max-width:1023px) {
+      .animallo {
+        height: 79vh;
+        background-image: url("images/backkBanner.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+
+    @media (max-width:927px) {
+      .animallo {
+        height: 73vh;
+      }
+    }
+
+    @media (max-width:855px) {
+      .animallo {
+        height: 67vh;
+      }
+    }
+
+    @media (max-width:785px) {
+      .animallo {
+        height: 60vh;
+      }
+    }
+
+    @media (max-width:703px) {
+      .animallo {
+        height: 54vh;
+      }
+    }
+
+    @media (max-width:632px) {
+      .animallo {
+        height: 48vh;
+      }
+
+      #text {
+        font-size: 3.5em;
+      }
+    }
+
+    @media (max-width:561px) {
+      .animallo {
+        height: 44vh;
+      }
+
+      #text {
+        font-size: 3.5em;
+      }
+    }
+
+    @media (max-width:514px) {
+      .animallo {
+        height: 39vh;
+      }
+    }
+
+    @media (max-width:456px) {
+      .animallo {
+        height: 35vh;
+      }
+    }
+
+    @media (max-width:409px) {
+      .animallo {
+        height: 30vh;
+      }
+    }
+
+    @media (max-width:351px) {
+      .animallo {
+        height: 26vh;
+      }
+
+      #text {
+        font-size: 2em;
+      }
+    }
+
+    @media (max-width:304px) {
+      .animallo {
+        height: 23vh;
+      }
+    }
+
+    @media (max-width:269px) {
+      .animallo {
+        height: 19vh;
+      }
+    }
+
+    @media (max-width:222px) {
+      .animallo {
+        height: 15vh;
+      }
+    }
+
+    #gotoComment {
+      text-decoration: none;
+      color: white;
+      padding-left: 9px;
+      font-size: 15px;
+      text-align: center;
+      align-items: center;
+    }
+
+    #comm i {
+      color: white;
+    }
+
+    .headings {
+      color: white;
+      font-weight: bold;
+      text-shadow: 2px 2px 3px black;
+    }
+
+    #note {
+      line-height: 17px;
+    }
+
+    .leo p {
+
+      padding: 16px;
+      border-radius: 20px;
+      color: white;
+      line-height: 30px;
+      word-spacing: 2px;
+      transition: all .3s;
+      margin-top: 25px;
+    }
+
+    .leo h3{
+      margin-top: 30px;
+    }
+
+    .leo p:hover {
+      background-color: #0096873b;
+      transform: scale(1.04);
+      box-shadow: 3px 3px 14px black;
+    }
+
+    #marine {
+      margin-top: 80px !important;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">ANIMALLO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/service">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Look For
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/blogs">Blogs</a></li>
+              <li><a class="dropdown-item" href="/donation">Donation</a></li>
+              <li><a class="dropdown-item" href="/why_choose_us">Why Choose Us</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="ani" class="animallo">
+    <img src="images/hill1.png" alt="" id="hill1">
+    <img src="images/hill2.png" alt="" id="hill2">
+    <img src="images/hill3.png" alt="" id="hill3">
+    <img src="images/hill4.png" alt="" id="hill4">
+    <img src="images/hill5.png" alt="" id="hill5">
+    <img src="images/tree.png" alt="" id="tree">
+    <h2 id="text">Animallo</h2>
+    <img src="images/leaf.png" alt="" id="leaf">
+    <img src="images/plant.png" alt="" id="plant">
+  </section>
+
+
+  <section class="sec2">
+    <div class="container">
+      <h1 style="color: white; font-weight: bold;">Welcome to Animallo</h1>
+      <p style="font-size: 20px;">Explore the Unexplored</p>
+
+      <p id="atWild">At Wildlife Blogs, we invite you to embark on a captivating journey through the heart of
+        the
+        wilderness. Our blog is a sanctuary for those who share a deep reverence for the incredible creatures,
+        ecosystems, and adventures that make up our planet's diverse tapestry.</p>
+      <div class="row">
+        <!--Grid column-->
+        <div id="maincol" class="col-md-10 mb-4">
+          <!--Section: Post data-mdb-->
+          <section class="border-bottom mb-4">
+            <img src="images/naturee.jpg"
+              class="img-fluid shadow-2-strong rounded-5 mb-4" alt="" />
+
+            <div class="row align-items-center mb-4">
+
+              <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
+
+                <img src="images/saklin.jpg" class="rounded-5 shadow-1-strong me-2" height="35" alt="" loading="lazy" />
+
+                <span style="color: white;"> Published <u>15.09.2023</u> by <b>Saklin Mustak</b></span>
+              </div>
+
+              <div class="col-lg-6 text-center text-lg-end">
+
+                <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #55acee;">
+
+                  <i class="fa-brands fa-facebook-f"></i>
+
+                </button>
+
+                <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #55acee;">
+
+                  <a style="text-decoration: none; color: white;"
+                    href="https://youtube.com/@Animallo-blogs?si=tzTZddWPiopHhGNh"><i
+                      class="fa-brands fa-youtube"></i></a>
+
+                </button>
+
+                <button type="button" class="btn btn-primary px-3 me-1" style="background-color: #0082ca;">
+                  <i class="fab fa-linkedin"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary px-3 me-1">
+                  <a id="comm" href="#allC"> <i class="fas fa-comments"> </i></a>
+                </button>
+
+              </div>
+            </div>
+          </section>
+          <!--Section: Post data-mdb-->
+
+          <!--Section: Text-->
+          <section>
+            <h2 style="text-shadow: 2px 2px 4px #ff8383;">The Diverse World of Mammals</h2>
+            <p style="font-size: 17px;">
+              Mammals are among the most familiar and charismatic of all wild animals. They are
+              characterized by
+              features such as fur or hair, mammary glands, and the ability to give birth to live young.
+              Within this
+              group, the diversity is astounding. From the towering African elephant, the largest land
+              mammal, to the
+              tiny bumblebee bat, which could fit on a human fingertip, mammals come in all shapes and
+              sizes.
+            </p>
+            <img src="images/chetahii.jpg" class="img-fluid shadow-2-strong rounded-5 mb-4" alt="" />
+            <div class="leo">
+              <h3 class="headings">The Leopard's Physical Attributes:</h3>
+              <p>
+                Leopards are renowned for their stunning coat, characterized by golden-yellow fur adorned with black
+                rosettes. Interestingly, no two leopards have the same pattern of spots, making each individual unique.
+                Their rosettes serve as effective camouflage in their natural habitats, helping them blend seamlessly
+                into the dappled sunlight and shadows of the forest.
+                Leopards are medium-sized big cats, with males typically larger than females. Adult males can weigh
+                between 130 to 200 pounds and measure around 4.5 to 6.25 feet from head to tail. Their powerful build
+                and remarkable agility make them adept climbers and formidable hunters.
+              </p>
+
+              <h3 class="headings">Habitat and Range:</h3>
+              <p>Leopards are incredibly adaptable and can thrive in a wide range of environments, from the dense
+                jungles of Southeast Asia to the savannahs of Africa. They are known to inhabit more diverse habitats
+                than any other big cat species. Their adaptability is due in part to their ability to survive on a
+                variety of prey, including impalas, gazelles, and smaller mammals.
+                <br><br>
+                These cats are found across sub-Saharan Africa, the Russian Far East, and parts of Asia, but their
+                populations are not evenly distributed. Their numbers have dwindled in some regions due to habitat loss
+                and poaching, making them a vulnerable species in need of protection.
+              </p>
+
+              <h3 class="headings">Leopard Behavior:</h3>
+              <p>Leopards are solitary creatures, with adult individuals occupying and defending territories that can
+                vary in size. They are known for their stealth and patience when hunting. Leopards often store their
+                kills in trees to keep them away from scavengers and to ensure a steady source of food.
+                <br><br>
+                Another remarkable trait of leopards is their ability to adapt to both diurnal and nocturnal activity,
+                depending on the local prey and environmental conditions. This adaptability has contributed to their
+                widespread distribution.
+              </p>
+
+              <h3 class="headings">Conservation Challenges:</h3>
+              <p>Leopards face numerous threats in the wild. Habitat destruction and fragmentation due to human
+                activities, such as deforestation and urbanization, are major concerns. Additionally, they are hunted
+                for their beautiful pelts, and their bones and body parts are sometimes used in traditional medicines.
+              </p>
+
+              <h3 class="headings">Conclusion:</h3>
+              <p>
+                Leopards, with their unmatched grace and beauty, are a symbol of the wild places they inhabit. Their
+                adaptability and elusive nature only add to their mystique. As we learn more about these magnificent
+                creatures and the challenges they face, it becomes clear that we must take action to ensure their
+                survival. Conservation efforts and education are vital in preserving the legacy of these majestic big
+                cats, allowing future generations to marvel at their elegance and the vital role they play in our
+                planet's ecosystems.
+              </p>
+            </div>
+
+            <h2 style="text-shadow: 2px 2px 4px #ff8383; margin-top: 70px;">The Underwater World of Marine Life</h2>
+
+            <p style="font-size: 17px;">
+              The oceans cover more than 70% of the Earth's surface, and beneath the waves lies a realm
+              teeming with
+              life. Marine animals range from the colossal blue whale, the largest animal to have ever
+              existed on Earth,
+              to the intricately patterned clownfish that inhabit coral reefs. The diversity of marine
+              life is essential
+              for the health of our planet and provides sustenance to millions of people.
+            </p>
+
+            <p id="note"
+              style=" color: black; font-size: 13px; border: 1px solid; border-radius: 10px; padding: 8px; background-color:#efefef;"
+              class="note note-light">
+              <strong style="color: #aa9b16;">Note:</strong>
+              One of the most celebrated underwater wonders is the Great Barrier Reef, a sprawling coral
+              ecosystem off
+              the coast of Australia. This intricate web of coral formations is home to an astonishing
+              variety of marine
+              life, from vibrantly colored fish to graceful sea turtles and the elusive and mesmerizing
+              seahorse.
+            </p>
+
+            <div class="leo" style="font-size: 15px;">
+              <h3 class="headings">Majestic Giants: Whales and Dolphins</h3>
+              <p>The oceans are also home to some of the planet's most magnificent creatures: whales and
+                dolphins. The
+                haunting songs of humpback whales echo through the deep waters, while playful pods of
+                dolphins dance at
+                the surface. These marine mammals exhibit intelligence, social behavior, and a deep
+                connection to their
+                watery world.</p>
+            </div>
+            <img src="images/dolphinnn.jpg" class="img-fluid shadow-1-strong rounded-5 mb-4" alt="" />
+
+            <ul type="none" id="dots" style="font-size: 14px; color: white;">
+              <li><a href="#MarineMammals">Marine Mammals</a></li>
+              <li><a href="#Diversity">Diversity</a></li>
+              <li><a href="#SizeVariation">Size Variation</a></li>
+              <li><a href="#BehaviorandIntelligence">Behavior</a></li>
+              <li><a href="#Migration">Migration</a></li>
+            </ul>
+
+            <div id="marine" class="leo">
+
+              <h3 id="MarineMammals" class="headings">Marine Mammals</h3>
+              <p>
+                Marine mammals are a diverse group of warm-blooded, air-breathing mammals that have adapted to life in
+                the ocean. They are characterized by various unique adaptations that allow them to thrive in marine
+                environments. Here are some common examples of marine mammals: <br>
+                Dolphins and Porpoises, Whales, Seals, Sea Lions, Walrus.
+              </p>
+
+              <h3 id="Diversity" class="headings">Diversity</h3>
+              <p>The diversity of marine mammals is remarkable, as they represent a wide array of species that have
+                adapted to life in the oceans, seas, and other aquatic environments. These creatures are a testament to
+                the adaptability and evolution of mammals in aquatic habitats.
+              </p>
+              <p style="margin-top: -25px;">
+                The diversity of marine mammals is not only fascinating but also crucial for the health of marine
+                ecosystems. They play various roles, including maintaining food chains, influencing nutrient cycling,
+                and even supporting ecotourism. However, many marine mammal species are facing threats from habitat
+                degradation, pollution, climate change, and human activities. Conservation efforts are essential to
+                protect and preserve the incredible diversity of marine mammals for future generations.
+              </p>
+
+              <h3 id="SizeVariation" class="headings">Size Variation</h3>
+              <p>
+                Marine mammals exhibit a remarkable range of sizes, from the diminutive vaquita, measuring around 4.6
+                feet in length, to the colossal blue whale, which can reach lengths of up to 98 feet or more. This size
+                variation is influenced by factors like species, diet, and evolutionary adaptations. Whales, dolphins,
+                and porpoises encompass some of the largest and smallest marine mammals, highlighting the incredible
+                diversity within this group. These size differences are a testament to the adaptability of marine
+                mammals to their aquatic environments, with each species evolving specific characteristics to thrive in
+                their unique niches.
+              </p>
+
+              <h3 id="BehaviorandIntelligence" class="headings">Behavior and Intelligence</h3>
+              <p>
+                Marine mammals, such as dolphins and whales, exhibit complex social behaviors, including cooperative
+                hunting and communication through clicks and songs. They display remarkable intelligence, as evidenced
+                by problem-solving abilities and advanced learning in captivity. These animals often form close-knit
+                social groups, relying on social bonds for protection and hunting. Some marine mammals, like orcas, even
+                exhibit cultural behaviors passed down through generations. Their cognitive and behavioral adaptability
+                allows them to thrive in diverse ocean environments.
+              </p>
+
+              <h3 id="Migration" class="headings">Migration</h3>
+              <p>
+                Marine mammals, such as whales and dolphins, undertake remarkable migrations, covering vast distances in
+                search of food, mating grounds, and suitable environments. These migrations are driven by seasonal
+                changes and the availability of prey. For instance, gray whales migrate up to 12,000 miles annually
+                between their Arctic feeding grounds and Mexican breeding areas. Humpback whales also embark on long
+                journeys, moving from polar regions to tropical waters. These remarkable migrations are a testament to
+                the adaptability and survival strategies of marine mammals.
+              </p>
+
+
+              <p id="dotsdownpara">
+                In conclusion, whales and dolphins are not only remarkable creatures in their own right but
+                also integral
+                components of marine ecosystems. Their sheer size, intelligence, and unique adaptations
+                continue to
+                captivate scientists and nature enthusiasts alike. However, their survival is increasingly
+                threatened,
+                emphasizing the importance of conservation efforts to protect these majestic giants and
+                their oceanic
+                habitats.
+              </p>
+            </div>
+          </section>
+          <!--Section: Text-->
+
+          <!--Section: Share buttons-->
+          <section id="sharebuttons" class="text-center border-top border-bottom py-4 mb-4">
+
+            <p><strong>Share with your friends:</strong></p>
+
+            <button type="button" class="btn btn-primary me-1" style="background-color: #3b5998;">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+
+            <button type="button" class="btn btn-primary me-1" style="background-color: #55acee;">
+              <i class="fab fa-twitter"></i>
+            </button>
+
+            <button type="button" class="btn btn-primary me-1" style="background-color: #0082ca;">
+              <i class="fab fa-linkedin"></i>
+            </button>
+
+            <button type="button" class="btn btn-primary me-1">
+              <i class="fas fa-comments me-2"><a id="gotoComment" href="#comment">Add comment</a></i>
+            </button>
+
+          </section>
+          <!--Section: Share buttons-->
+
+          <!--Section: Author-->
+          <section id="allC" class="border-bottom mb-4 pb-4">
+            <div class="row">
+              <div class="col-2">
+                <img id="authImg" src="images/saklin.jpg" class="img-fluid shadow-1-strong rounded-5" alt="" />
+              </div>
+
+              <div class="col-9">
+                <p class="mb-2" style="font-size: 20px;"><strong>Saklin Mustak</strong></p>
+                <a id="facebook" href="" class="text-dark"><i class="fa-brands fa-facebook"
+                    style="color: #ffffff;"></i></a>
+                <a id="insta" href="" class="text-dark"><i class="fa-brands fa-square-instagram"
+                    style="color: #ffffff;"></i></a>
+                <a id="linkedin" href="" class="text-dark"><i class="fa-brands fa-linkedin"
+                    style="color: #ffffff;"></i></a>
+                <a id="youtube" href="https://youtube.com/@Animallo-blogs?si=tzTZddWPiopHhGNh" class="text-dark"><i
+                    class="fa-brands fa-youtube" style="color: #ffffff;"></i></a>
+                <p style="font-size: 14px; margin-top: 10px;">
+                  This natural photo captures the raw beauty of the world, revealing the exquisite intricacies of our
+                  environment and inviting us to contemplate the profound harmony that exists within the untouched
+                  landscapes and creatures it portrays.
+                </p>
+              </div>
+            </div>
+          </section>
+          <!--Section: Author-->
+
+          <!--Section: Comments-->
+          <section class="border-bottom mb-3">
+            <p class="text-center"><strong>Comments: 4</strong></p>
+
+            <!-- Comment -->
+            <div class="row mb-4">
+              <div class="col-1">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(24).jpg"
+                  class="img-fluid shadow-1-strong rounded-5" alt="" />
+              </div>
+
+              <div class="col-10">
+                <p class="mb-2" style="font-size: 15px;"><strong>Marta Dolores</strong></p>
+                <p class="commentsPara" style="font-size: 13px;">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est ab
+                  iure
+                  inventore dolorum consectetur? Molestiae aperiam atque quasi consequatur
+                  aut?
+                  Repellendus alias dolor ad nam, soluta distinctio quis accusantium!
+                </p>
+              </div>
+            </div>
+
+            <!-- Comment -->
+            <div class="row mb-4">
+              <div class="col-1">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(24).jpg"
+                  class="img-fluid shadow-1-strong rounded-5" alt="" />
+              </div>
+
+              <div class="col-10">
+                <p class="mb-2" style="font-size: 15px;"><strong>Marta Dolores</strong></p>
+                <p class="commentsPara" style="font-size: 13px;">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est ab
+                  iure
+                  inventore dolorum consectetur? Molestiae aperiam atque quasi consequatur
+                  aut?
+                  Repellendus alias dolor ad nam, soluta distinctio quis accusantium!
+                </p>
+              </div>
+            </div>
+
+
+
+
+            <!-- Comment -->
+            <div class="row mb-4">
+              <div class="col-1">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(25).jpg"
+                  class="img-fluid shadow-1-strong rounded-5" alt="" />
+              </div>
+
+              <div class="col-10">
+                <p class="mb-2" style="font-size: 15px;"><strong>Valeria Groove</strong></p>
+                <p class="commentsPara" style="font-size: 13px;">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est ab
+                  iure
+                  inventore dolorum consectetur? Molestiae aperiam atque quasi consequatur
+                  aut?
+                  Repellendus alias dolor ad nam, soluta distinctio quis accusantium!
+                </p>
+              </div>
+            </div>
+
+            <!-- Comment -->
+            <div class="row mb-4">
+              <div class="col-1">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg"
+                  class="img-fluid shadow-1-strong rounded-5" alt="" />
+              </div>
+
+              <div class="col-10">
+                <p class="mb-2" style="font-size: 15px;"><strong>Antonia Velez</strong></p>
+                <p class="commentsPara" style="font-size: 13px;">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est ab
+                  iure
+                  inventore dolorum consectetur? Molestiae aperiam atque quasi consequatur
+                  aut?
+                  Repellendus alias dolor ad nam, soluta distinctio quis accusantium!
+                </p>
+              </div>
+            </div>
+          </section>
+          <!--Section: Comments-->
+
+          <!--Section: Reply-->
+          <section id="comment">
+            <p style="font-size: 15px;" class="text-center"><strong>Leave a reply</strong></p>
+
+            <form action="/" method="post">
+              <!-- Name input -->
+              <div class="form-outline mb-4">
+                <input name="Name" type="text" id="Name" class="form-control" placeholder="xyz abc" />
+                <label style="font-size: 15px; color: white; font-weight: bold;" class="form-label"
+                  for="Name">Name</label>
+              </div>
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input name="Email_address" type="email" id="Email_address" class="form-control"
+                  placeholder="abc@gmail.com" />
+                <label style="font-size: 15px; color: white; font-weight: bold;" class="form-label"
+                  for="Email_address">Email
+                  address</label>
+              </div>
+
+              <!-- Message input -->
+              <div class="form-outline mb-4">
+                <textarea name="Comments" class="form-control" id="Comments" rows="4"></textarea>
+                <label style="font-size: 15px; color: white; font-weight: bold;" class="form-label"
+                  for="Comments">Comments</label>
+              </div>
+
+              <!-- Checkbox -->
+              <div id="check" class="form-check d-flex justify-content-center mb-4">
+                <input name="Copy" class="form-check-input me-2" type="checkbox" value="" id="Copy" checked />
+                <label style="font-size: 12px; color: white;" class="form-check-label" for="Copy">
+                  Send me a copy of this comment
+                </label>
+              </div>
+
+              <!-- Submit button -->
+              <button id="publishButton" name="submit" style="font-size: 12px;" type="submit"
+                class="btn btn-success btn-block mb-4">
+                Publish
+              </button>
+            </form>
+          </section>
+          <!--Section: Reply-->
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+          <!--Section: Sidebar-->
+
+          <!--Section: Sidebar-->
+        </div>
+        <!--Grid column-->
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <!-- footer----------------------------------------->
+  <div id="footer">
+    <img src="images/logo-transparent-black.png" alt="#" class="footer-img">
+    <div class="title-text">
+      <p>VISIT</p>
+      <h1 style="color: #000000;">Visit Now Today</h1>
+    </div>
+
+    <div class="footer-row">
+      <div class="footer-left">
+        <h1 style="color: #000000;">Our Targets</h1>
+        <p style="color: #000000; font-size: 12px;"><i class="fa-regular fa-circle-check"></i> Explore the
+          Unexplored</p>
+        <p style="color: #000000; font-size: 12px;"><i class="fa-regular fa-circle-check"></i> Explore the
+          Untamed Beauty</p>
+        <p style="color: #000000; font-size: 12px;"><i class="fa-regular fa-circle-check"></i> Enthusiasts
+          and wildlife lovers!</p>
+      </div>
+      <div class="footer-right">
+        <h1 style="color: #000000;">get In Touch</h1>
+        <p style="color: #000000; font-size: 12px;">Kolkata, Barasat, 700126 <i
+            class="fa-solid fa-map-location-dot"></i></p>
+        <p style="color: #000000; font-size: 12px;">saklinwind53@gmail.com <i
+            class="fa-solid fa-envelope-open-text"></i></p>
+        <p style="color: #000000; font-size: 12px;">+91 906440000<i class="fa-solid fa-phone"></i></p>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-linkedin"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <a href="https://youtube.com/@Animallo-blogs?si=tzTZddWPiopHhGNh"><i class="fa-brands fa-youtube"></i></a>
+      <p style="color: #000000; font-weight: bold;">Copyright ©2023 All rights reserved by: ANIMALLO </p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <script>
+    let text = document.getElementById('text');
+    let leaf = document.getElementById('leaf');
+    let hill1 = document.getElementById('hill1');
+    let hill4 = document.getElementById('hill4');
+    let hill5 = document.getElementById('hill5');
+
+    window.addEventListener('scroll', () => {
+      let value = window.scrollY;
+
+      text.style.marginTop = value * 1.2 + 'px';
+
+      leaf.style.top = value * -1.5 + 'px';
+      leaf.style.left = value * 1.5 + 'px';
+
+      hill5.style.left = value * 1.5 + 'px';
+
+      hill4.style.left = value * -1.5 + 'px';
+
+      hill1.style.top = value * 1 + 'px';
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
