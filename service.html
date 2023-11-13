@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+
+    <link rel="icon" href="images/WebLogo.png" type="image/icon type">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .card {
+            transition: all ease 0.5s;
+        }
+
+        .card:hover {
+            background-color: rgba(214, 217, 224, 0.534);
+        }
+
+        .card>img {
+            border-radius: 5px;
+            object-fit: cover;
+            transition: all ease 1s;
+        }
+
+        .card>img:hover {
+            scale: 1.2;
+            cursor: pointer;
+        }
+
+        .card>.card-body {
+            margin-top: 30px;
+        }
+
+        .card-footer {
+            background-color: rgba(178, 182, 185, 0.386);
+        }
+
+        #animallo {
+            height: 250px;
+            position: relative;
+            top: 30px;
+            left: 160px;
+            transition: 0.5s;
+        }
+
+        #animallo-text {
+            margin-top: 40px;
+            font-size: 17px;
+            margin-left: 40px;
+            transition: 0.5s;
+        }
+
+        #firstSecCon,
+        #firstSecCon2 {
+            transition: 0.5s;
+        }
+
+        #firstSecCon #firstSubsec,
+        #firstSecCon2 #firstSubsec2 {
+            display: flex;
+            padding: 10px;
+            transition: 0.5s;
+        }
+
+        @media (max-width:1101px) {
+            #animallo {
+                height: 230px;
+                position: relative;
+                top: 30px;
+                left: 130px;
+            }
+        }
+
+        @media (max-width:989px) {
+            #animallo {
+                height: 210px;
+                position: relative;
+                top: 30px;
+                left: 100px;
+            }
+        }
+
+        @media (max-width:873px) {
+            #animallo {
+                height: 180px;
+                position: relative;
+                top: 30px;
+                left: 50px;
+            }
+        }
+
+        @media (max-width:681px) {
+            #animallo {
+                height: 130px;
+                position: relative;
+                top: 30px;
+                left: 10px;
+            }
+        }
+
+        @media (max-width:577px) {
+            #animallo-text {
+                width: auto;
+                overflow: hidden;
+                margin-left: 0;
+                z-index: 2;
+            }
+        }
+
+        @media (max-width:577px) {
+            #animallo {
+                display: none;
+            }
+
+            #animallo-text {
+                position: relative;
+            }
+
+            #animallo-text::before {
+                background: url("logo-transparent-black.png");
+                background-repeat: no-repeat;
+                background-size: contain;
+                content: '';
+                position: absolute;
+                bottom: 60px !important;
+                left: 50px !important;
+                inset: 0;
+                opacity: 0.2;
+            }
+        }
+
+        @media (max-width:535px) {
+
+            #firstSecCon #firstSubsec,
+            #firstSecCon2 #firstSubsec2 {
+                display: inline-block;
+            }
+
+            .card {
+                margin-top: 15px;
+            }
+        }
+    </style>
+
+</head>
+
+<body data-bs-theme="white">
+    <nav class=" bg-dark navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class=" text-white navbar-brand" href="#">ANIMALLO</a>
+
+
+            <button class="bg-success navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul style="margin-left: 30%;" class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="text-white nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="text-white nav-link" href="/about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="text-white nav-link" href="/service">Services</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="text-white nav-link" href="/contact">Contact</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class=" text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Look for
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                            <li><a class="dropdown-item" href="/blogs">Blogs</a></li>
+
+                            <li><a class="dropdown-item" href="/donation">Donation</a></li>
+                            
+                            <li><a class="dropdown-item" href="/why_choose_us">Why Choose Us</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="form-check form-switch mx-4">
+        <input class="form-check-input p-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked
+            onclick="myFunction()" />
+
+    </div>
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div id="animallo-text" class="col-sm-6">Welcome to our Wildlife
+                Encounter Services page, where your journey to connect with the natural world begins. At ANIMALLO, we
+                are passionate about bringing people closer to the captivating wonders of the animal kingdom. Our expert
+                guides and dedicated team ensure that you have an unforgettable and educational experience, fostering a
+                deep appreciation for wildlife conservation. <br>
+
+                <a style="margin-top: 15px; margin-left: -2px;" href="/why_choose_us"
+                    class="btn btn-success btn-lg rounded-5" role="button" aria-disabled="true">Why Choose Us?</a>
+            </div>
+            <div class="col-sm-3">
+                <img id="animallo" src="images/logo-transparent-black.png" alt="#img">
+            </div>
+            <!-- <div class="col-sm-3">Lorem ipsum dolor sit amet.</div>
+            <div class="col-sm-3">Lorem ipsum dolor sit amet.</div> -->
+        </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 100px;">
+        <h4>Our Services</h4>
+    </div>
+
+
+    <!-- service section ----------------------------------------------------------------->
+    <div id="firstSecCon" class="container-fluid" style="margin-left: 2px; margin-top: 10px;">
+        <div id="firstSubsec" class="card-deck">
+
+            <div class="card" style="overflow: hidden;">
+                <img style="width: border-box;" class="card-img-top" src="images/Private-Guiding-Banner.jpg"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Guided Wildlife Tours</h5>
+                    <p class="card-text">Embark on an immersive journey led by our knowledgeable guides, who are
+                        well-versed in local ecosystems and animal behavior. From dense forests to open savannas, our
+                        tours take you through diverse habitats where you can witness animals in their natural
+                        environments.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card" style="margin-left: 10px; overflow: hidden;">
+                <img style="width: border-box;" class="card-img-top" src="images/photoshoot.webp" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Photography Expeditions</h5>
+                    <p class="card-text">Capture breathtaking moments as you join our photography experts on expeditions
+                        designed for both novice and experienced photographers. Learn to capture stunning images of
+                        wildlife, from the subtle details of flora to the majesty of predators in action.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card" style="margin-left: 10px; overflow: hidden;">
+                <img class="card-img-top" src="images/work1.png" alt="Card image cap">
+                <div class="card-body" style="width: border-box;">
+                    <h5 class="card-title">Wildlife Workshops</h5>
+                    <p class="card-text">Immerse yourself in the world of wildlife through interactive workshops. Learn
+                        about animal tracking, birdwatching, plant identification, and more, all while gaining a deeper
+                        understanding of the delicate balance of ecosystems.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- next line service sections ------------------------------------------------------>
+
+    <div id="firstSecCon2" class="container-fluid" style="margin-left: 2px; margin-top: 30px;">
+        <div id="firstSubsec2" class="card-deck">
+
+            <div class="card" style="overflow: hidden;">
+                <img class="card-img-top" src="images/safari.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Nocturnal Safaris</h5>
+                    <p class="card-text">Experience the magic of the night as our guides lead you on a thrilling journey
+                        to observe nocturnal creatures. Equipped with specialized equipment, you'll witness the
+                        mysterious behavior of animals that only come alive after dark.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card" style="margin-left: 10px; overflow: hidden;">
+                <img class="card-img-top" src="images/talks.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Conservation Talks</h5>
+                    <p class="card-text">Engage with our experts in insightful discussions about conservation efforts
+                        and the challenges facing our planet's wildlife. Discover how your actions can contribute to
+                        safeguarding these incredible creatures for future generations.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card" style="margin-left: 10px; overflow: hidden;">
+                <img class="card-img-top" src="images/edu.jpeg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Educational Programs</h5>
+                    <p class="card-text">We believe that education is a vital tool for conservation. Our tailor-made
+                        educational programs for schools and groups provide hands-on learning experiences that inspire
+                        young minds to become stewards of the environment.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- footer ---------------------------------------->
+
+    <footer class="bg-dark text-white pt-5 pb-4">
+
+        <div class="container text-center text-md-left">
+
+            <div class="row text-center text-md-left">
+
+                <div class="col-md-3 col-lg-3 col-xl-3 max-auto mt-3 ">
+
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">ANIMALLO</h5>
+                    <p>Wildlife blogging website Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo odio
+                        totam itaque nostrum</p>
+                </div>
+
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Products</h5>
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">The providers</a>
+                    </p>
+
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">Creativity</a>
+                    </p>
+
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">Features</a>
+                    </p>
+
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">About</a>
+                    </p>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Useful Links</h5>
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">Your Account</a>
+                    </p>
+
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">Become an Affiliates</a>
+                    </p>
+
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">Ratings</a>
+                    </p>
+
+                    <p>
+                        <a class="text-white" style="text-decoration: none;" href="#">Help</a>
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 max-auto mt-3">
+
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h5>
+                    <p>
+                        <i class="fas fa-home mr-3"></i> Kolkata, 700126, WB
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> saklinwind53@gmail.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> +91 9065000064
+                    </p>
+                    <p>
+                        <i class="fas fa-print mr-3"></i> +91 6297050000
+                    </p>
+                </div>
+
+                <hr class="mb-4">
+
+                <div class="col-md-7 col-lg-8">
+
+                    <p>Copyright &copy;2023 All rights reserved by:
+                        <a href="#" style="text-decoration: none;">
+                            <strong class="text-warning">ANIMALLO</strong>
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-right">
+
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                    <i class="fab fa-google-plus"></i>
+                                </a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+
+                            <li class="list-inline-item">
+                                <a href="https://youtube.com/@Animallo-blogs?si=tzTZddWPiopHhGNh"
+                                    class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.dataset.bsTheme =
+                element.dataset.bsTheme == "light" ? "dark" : "light";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

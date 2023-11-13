@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs</title>
+
+  <link rel="icon" href="images/WebLogo.png" type="image/icon type">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f1f1f1;
+      /* padding: 20px; */
+      font-family: Arial;
+    }
+
+    /* Center website */
+    .main {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 50px;
+      word-break: break-all;
+    }
+
+    #myBtnContainer button {
+      margin-left: 10px;
+    }
+
+    .row {
+      margin: 8px -16px;
+      padding: 20px !important;
+    }
+
+    /* Add padding BETWEEN each column (if you want) */
+    .row,
+    .row>.column {
+      padding: 8px;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      display: none;
+      /* Hide columns by default */
+    }
+
+    /* Clear floats after rows */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Content */
+    .content {
+      background-color: white;
+      padding: 10px;
+    }
+
+    /* The "show" class is added to the filtered elements */
+    .show {
+      display: block;
+    }
+
+    /* Style the buttons */
+    .btn {
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    /* Add a grey background color on mouse-over */
+    .btn:hover {
+      background-color: #ddd;
+    }
+
+    /* Add a dark background color to the active button */
+    .btn.active {
+      background-color: #666;
+      color: white;
+    }
+
+    .row .content>h4 {
+      text-transform: capitalize;
+    }
+
+    .row .content>h4,
+    .row .content>p {
+      color: black;
+    }
+
+    .spoiler {
+      color: cadetblue !important;
+      background-position: right;
+      background-size: 100% 100%;
+      background-image: linear-gradient(#a0aec0, #a0aec0);
+      display: inline;
+      background-repeat: no-repeat;
+      transition: all 500ms ease-in-out;
+    }
+
+    .spoiler:hover {
+      color: #000 !important;
+      background-size: 0% 100%;
+    }
+
+    .content{
+      transition: all .3s;
+    }
+    .content:hover{
+      background-color: #d2c7c766;
+      border-radius: 10px;
+      transform: scale(1.03);
+    }
+
+    .content>img:hover{
+      border-radius: 10px;
+    }
+
+
+    @media(max-width:1050px) {
+
+      .column {
+        float: left;
+        width: 50%;
+      }
+    }
+
+
+    @media(max-width:730px) {
+
+      .column {
+        float: left;
+        width: 100%;
+      }
+    }
+
+    .collapse {
+      margin: 0;
+      padding: 0;
+      transition: all .5s !important;
+      transform: scale(1.1);
+    }
+
+    iframe {
+      height: 250px !important;
+      width: 100% !important;
+      padding-top: 15px !important;
+    }
+  </style>
+</head>
+
+<body data-bs-theme="white">
+  <nav class=" bg-dark navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class=" text-white navbar-brand" href="#">ANIMALLO</a>
+
+
+      <button class="bg-success  navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul style="margin-left: 30%;" class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="text-white nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="text-white nav-link" href="/about">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="text-white nav-link" href="/service">Services</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="text-white nav-link" href="/contact">Contact</a>
+          </li>
+
+          <li class="nav-item dropdown">
+
+            <a class=" text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Look for
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+              <li><a class="dropdown-item" href="/blogs">Blogs</a></li>
+
+              <li><a class="dropdown-item" href="/donation">Donation</a></li>
+
+              <li><a class="dropdown-item" href="/why_choose_us">Why Choos Us</a></li>
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!--|||| body section |||| -------------------------------------------------------------------------->
+
+  <h5 class="text-dark" style="margin-left: 10px; margin-top: 20px;">Welcome to our Wildlife
+    Encounter Services page, where your journey to connect with the natural world begins. At ANIMALLO, we
+    are passionate about bringing people closer to the captivating wonders of the animal kingdom. Our expert
+    guides and dedicated team ensure that you have an unforgettable and educational experience, fostering a
+    deep appreciation for wildlife conservation. </h5>
+  <div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button style="color: black;" class="btn" onclick="filterSelection('nature')"> Nature</button>
+    <button style="color: black;" class="btn" onclick="filterSelection('wild')"> Wild</button>
+    <button style="color: black;" class="btn" onclick="filterSelection('aquatic')"> Aquatic</button>
+  </div>
+
+  <!-- Gallery Grid ------------------------------------->
+  <div class="row">
+
+    <!-- nature --------------------------------------->
+    <div class="column nature">
+      <div class="content">
+        <img src="images/amazon rainforest.jpg" alt="Amazon#" style="width:100%">
+        <h4 class="text-dark">Amazon Rainforest</h4>
+        <p class="spoiler">The Amazon Rainforest in South America is one of the most biodiverse places on Earth. It is
+          home to countless species of animals, including jaguars, sloths, capybaras, toucans, and a wide variety of
+          amphibians, reptiles,
+          and insects.</p>
+
+
+
+
+        <div class="container mt-3">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+
+          <div id="nature" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/PNRunbAZS-Y?si=sgYHGFcpDWy-5N50" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/sundarban.jpg" alt="sunderban#" style="width:100%">
+        <h4>Sundarbans</h4>
+        <p>The Sundarbans mangrove forest, located in the delta region of the Bay of Bengal, spans parts of Bangladesh
+          and India. It is famous for being the habitat of the Bengal tiger, as well as numerous other species like
+          crocodiles, spotted deer, and various bird species.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature1"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature1" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/GKC4ADn8BNk?si=xrKvegmS-2ZLq4Mv" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/Borneo.jpg" alt="borneo#" style="width:100%">
+        <h4>Borneo Rainforest</h4>
+        <p>The Borneo rainforest, shared by Malaysia, Indonesia, and Brunei, is home to unique wildlife, including
+          orangutans, pygmy elephants, proboscis monkeys, and a diverse array of bird species.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature2"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature2" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/Hdwaqsdse74?si=GSDUZd-6AVcgSRga" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/congo.jpeg" alt="congo#" style="width:100%">
+        <h4>Congo Basin</h4>
+        <p>The Congo Basin rainforest in Central Africa is known for its incredible biodiversity. It's inhabited by
+          forest elephants, gorillas, chimpanzees, okapis, and various species of birds and reptiles.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature3"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature3" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/2h6VSraoD6Y?si=xtQnAWhkaR_WMg7l" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/taiga.webp" alt="taiga#" style="width:100%">
+        <h4>Taiga</h4>
+        <p> The taiga, or boreal forest, is the world's largest land biome, stretching across northern Europe, Asia, and
+          North America. It's home to animals like wolves, moose, reindeer, lynx, and various bird species.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature4"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature4" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/3Anyl4gX14k?si=ArZlCqv6HD-XFKGV" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/daintree.jpg" alt="daintree#" style="width:100%">
+        <h4>Daintree Rainforest</h4>
+        <p>The Daintree Rainforest in Queensland, Australia, is a UNESCO World Heritage Site. It's home to unique
+          species like the southern cassowary, tree kangaroos, and many bird species.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature5"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature5" class="collapse" id="collapse">
+            <iframe style="padding-top: 15px;" width="100%" height="100%"
+              src="https://www.youtube.com/embed/tdhNeWVf3iE?si=kQczp-xCHRDK1W8V" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/hoh rain forest.jpg" alt="Hoh Rainforest#" style="width:100%">
+        <h4>Hoh Rainforest</h4>
+        <p> Located in Olympic National Park, Washington, USA, the Hoh Rainforest is part of a temperate rainforest
+          ecosystem and is inhabited by animals like Roosevelt elk, black bears, and various bird species.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature6"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature6" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/cXVj2cwpsdE?si=7MmdyYniuKmRrE-7" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/gir.jpg" alt="Gir Forest National Park#" style="width:100%">
+        <h4>Gir Forest National Park</h4>
+        <p>This forest in Gujarat, India, is the last refuge of the Asiatic lion. It's also home to leopards, sambar
+          deer, and various bird species.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature7"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature7" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/Tv3ETasUGmU?si=C0qwHeNDBP8jsRxT" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/gombe.jpg" alt="Gombe Stream National Park#" style="width:100%">
+        <h4>Gombe Stream National Park</h4>
+        <p> Located in Tanzania, this park is known for Jane Goodall's groundbreaking work with chimpanzees. It's home
+          to a variety of primates and other wildlife.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature8"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature8" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/_E06ZuugKTs?si=lo2Gi99WXZt8zDQ4" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/Yosemite.webp" alt="Yosemite National Park#" style="width:100%">
+        <h4>Yosemite National Park</h4>
+        <p>First protected in 1864, Yosemite National Park is best known for its waterfalls, but within its nearly 1,200
+          square miles, you can find deep valleys, grand meadows, ancient giant sequoias, a vast wilderness area, and
+          much more.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature9"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature9" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/xoNQWIZU4FY?si=I1uz5oskIjaiyLqK" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/sumatra.jpg" alt="Sumatra Rainforest#" style="width:100%">
+        <h4>Sumatra Rainforest</h4>
+        <p>The 2.5 million hectare Tropical Rainforest Heritage of Sumatra site comprises three national parks: Gunung
+          Leuser National Park, Kerinci Seblat National Park and Bukit Barisan Selatan National Park. The site holds the
+          greatest potential for long-term conservation of the distinctive and diverse biota of Sumatra.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature10"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+          <div id="nature10" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/JhD7ZZDnICg?si=Uapkl6888o4XJo1C" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column nature">
+      <div class="content">
+        <img src="images/madagaskar.jpg" alt="Madagascar Rainforest#" style="width:100%">
+        <h4>Madagascar Rainforest</h4>
+        <p>The Madagascar lowland forests or Madagascar humid forests are a tropical moist broadleaf forest ecoregion
+          found on the eastern coast of the island of Madagascar, home to a plant and animal mix that is 80 to 90%
+          endemic.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-success" data-bs-toggle="collapse" data-bs-target="#nature11"
+            style="border: 1px solid rgb(65, 151, 72); color: rgb(65, 151, 72);">Learn More</button>
+
+          <div id="nature11" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/6LHe62PMSqQ?si=P9Mics61xsk-XK3D" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <!-- wild animals ------------------------------------------>
+    <div class="column wild">
+      <div class="content">
+        <img src="images/africal ele.webp" alt="african elephant#" style="width:100%">
+        <h4>African Elephant</h4>
+        <p>African elephants are members of the genus Loxodonta comprising two living elephant species, the African bush
+          elephant (L. africana) and the smaller African forest elephant (L. cyclotis). Both are social herbivores with
+          grey skin.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/i8FNus5glY0?si=jjrBsdo6sZdb-wQf" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/african rhino.jpg" alt="african rhino#" style="width:100%">
+        <h4>African rhino</h4>
+        <p>The black rhinoceros, black rhino or hook-lipped rhinoceros (Diceros bicornis) is a species of rhinoceros.
+          Although the species is referred to as black, its colours vary from brown to grey. It is the only extant
+          species of the genus Diceros.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild1"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild1" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/eIJ0rKomFbo?si=kPpHgOkHEDhH8zkJ" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/Baby orangutan.jpg" alt="Baby orangutan#" style="width:100%">
+        <h4>Baby orangutan</h4>
+        <p>Orangutans are great apes native to the rainforests of Indonesia and Malaysia. They are now found only in
+          parts of Borneo and Sumatra, but during the Pleistocene they ranged throughout Southeast Asia and South China.
+        </p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild2"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild2" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/wpWhKfF3neQ?si=jBITKec_AtKIbX9m" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/black footed cat.jpg" alt="black footed cat#" style="width:100%">
+        <h4>black footed cat</h4>
+        <p>The black-footed cat (Felis nigripes), also called the small-spotted cat, is the smallest wild cat in Africa,
+          having a head-and-body length of 35–52 cm (14–20 in). Despite its name, only the soles of its feet are black
+          or dark brown.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild3"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild3" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/RA4jm8LeosQ?si=qSYgULoRMdbebzEE" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/cheetah.jpg" alt="cheetah#" style="width:100%">
+        <h4>cheetah</h4>
+        <p>It is the fastest land animal, capable of running at 80 to 98 km/h (50 to 61 mph); as such, it has evolved
+          specialized adaptations for speed, including a light build, long thin legs and a long tail.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild4"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild4" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/e-pRi3IqtQQ?si=1HCAVUq1iMWEv3fp" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/gorilla.jpg" alt="gorilla#" style="width:100%">
+        <h4>gorilla</h4>
+        <p>The largest of the great apes, gorillas are stocky animals with broad chests and shoulders, large, human-like
+          hands, and small eyes set into hairless faces.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild5"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild5" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/Ce7fiJ20zb8?si=mnohH5y_87JeoeZj" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/hedgehog.jpg" alt="hedgehog#" style="width:100%">
+        <h4>hedgehog</h4>
+        <p>Although their eyesight is poor, they have good hearing and a well-developed sense of smell. Hedgehogs are
+          good runners, proficient climbers and can even swim. If attacked they roll into a tight ball so only their
+          spines are exposed.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild6"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild6" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/nUGDmKpFssE?si=VFYg82_0T0Zi2LfN" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/jaguar.jpg" alt="jaguar#" style="width:100%">
+        <h4>black jaguar</h4>
+        <p>Jaguars Have the Strongest Bite of the Cat Kingdom (Relative to Size) These majestic cats have a stocky,
+          heavy build with robust canines and a massive head, allowing them a more powerful bite than any other large
+          cat relative to its size.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild7"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild7" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/enUtirpRmVs?si=U5z7V7cPWW8U6ShY" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/koala.jpg" alt="koala#" style="width:100%">
+        <h4>koala</h4>
+        <p>Koalas have poor vision and rely heavily on their other senses. They have excellent hearing which helps them
+          detect predators and other koalas. They have an acute sense of smell which also helps them detect other koalas
+          and their favourite food trees</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild8"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild8" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/u0xAwLmog3g?si=fEHv8G3xmzPDuSsW" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/leopard.jpg" alt="leopard#" style="width:100%">
+        <h4>leopard</h4>
+        <p>Leopards are incredibly athletic and known for their climbing ability. They often carry food into trees to
+          avoid losing it to scavengers like lions and hyenas. They are also fast and can run up to 36 mph. In
+          comparison, the cheetah, the fastest land mammal, runs 50 to 80 mph.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild9"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild9" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/DJJPDz8t-J0?si=YY-g-wLXTwS8fTWq" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/lion.jpg" alt="lion#" style="width:100%">
+        <h4>lion</h4>
+        <p>The lion has forever been a symbol of strength, power and ferocity. During WWF tours to Africa, seeing the
+          majestic species up-close is sure to be a spine-tingling experience. 10. African lions are the most social of
+          all big cats and live together in groups or “prides.”</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild10"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild10" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/DVDZhEqyzKg?si=Av9qn7b-hl5RnyNS" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/mexican gray wolves.jpg" alt="mexican gray wolves#" style="width:100%">
+        <h4>mexican gray wolves</h4>
+        <p>Roughly five feet in length, Mexican gray wolves generally weigh between 50 and 80 pounds. Their coats are
+          buff, gray, and rust colored, often with distinguishing facial patterns. They have large heads with thick
+          muzzles, bushy tails, oversized paws, and long legs.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild11"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild11" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/PP1Q28tsGFM?si=JlZrxfb1ktvdHDob" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/moose.jpg" alt="moose#" style="width:100%">
+        <h4>moose</h4>
+        <p>Moose are the largest of all the deer species in the world. Only male moose (bulls) have antlers. The
+          particular shape differs from animal to animal and they are shed every year around November, being replaced
+          with larger ones the forthcoming spring.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild12"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild12" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/1ZHyqer7fGM?si=3kv23GMv1D-McbWE" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/musk ox.jpg" alt="musk ox#" style="width:100%">
+        <h4>musk ox</h4>
+        <p>Muskox (Ovibos moschatus) Uses. Muskoxen are valued for their meat, and about 260 animals a year are
+          harvested by hunters. Muskoxen are also valued for wildlife viewing, for the artwork made from their horns,
+          and for their soft underwool called qiviut, considered the world's warmest wool for its weight.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild13"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild13" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/LnPy1lcJeVU?si=T1GAHpwbHvj5eDgi" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/panda.webp" alt="panda#" style="width:100%">
+        <h4>panda</h4>
+        <p>Pandas subsist almost entirely on bamboo, eating from 26 to 84 pounds per day. Though solitary animals,
+          pandas still communicate with one another through vocalization and scent marking. They spray urine, claw tree
+          trunks and rub against objects to mark their paths.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild14"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild14" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/YjAj5AcqFtg?si=aDUDkqCxjpRYV9tE" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/deer.jpg" alt="deer#" style="width:100%">
+        <h4>deer</h4>
+        <p>The tissues present in the antlers of a deer grow faster than any other tissue on the planet. Chinese water
+          deer do not possess an antler. They are the only deer species that do not have antlers, they use a very long
+          canine tooth that they show off to impress their female mates.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild15"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild15" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/wOrbT_BsJaY?si=_LW47ML4bZMbVtQn" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/wombat.jpg" alt="wombat#" style="width:100%">
+        <h4>wombat</h4>
+        <p>Wombats are short-legged, muscular quadrupedal marsupials of the family Vombatidae that are native to
+          Australia. Living species are about 1 m (40 in) in length with small, stubby tails and weigh between 20 and 35
+          kg (44 and 77 lb).</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild17"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild17" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/P11bxHTY7UQ?si=C_UsPjYBuTgyFT_Y" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="column wild">
+      <div class="content">
+        <img src="images/zebra.jpg" alt="zebra#" style="width:100%">
+        <h4>zebra</h4>
+        <p>Zebras are easily recognised by their bold black-and-white striping patterns. The coat appears to be white
+          with black stripes, as indicated by the belly and legs when unstriped, but the skin is black.</p>
+
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#wild18"
+            style="border: 1px solid red; color: red;">Learn More</button>
+
+          <div id="wild18" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/h7Z-qg2kRzs?si=W4tzEwqGKlyxcGvh" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+    <!-- aquatic animal ------------------------->
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/dolphin.jpg" alt="dolphin#" style="width:100%">
+        <h4>dolphin</h4>
+        <p>Dolphins vary in size depending on the species, ranging from about 4 to 30 feet in length. Dolphins give
+          birth to live young. Gestation periods vary, but it's generally around 9-17 months. They are known for their
+          strong mother-calf bonds. Dolphins are carnivores, primarily feeding on fish, squid, and crustaceans.</p>
+
+        <div class="container mt-4">
+          <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic0"
+            style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28,183,244);">Learn More</button>
+
+          <div id="aquatic0" class="collapse" id="collapse">
+            <iframe src="https://www.youtube.com/embed/XzYbIb0a_Ww?si=_-NC8VPAxlnXp-WJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Shark.jpg" alt="Shark#" style="width:100%">
+        <h4>Shark</h4>
+        <p>Sharks come in various sizes. The largest, like the whale shark, can reach lengths of over 40 feet, while
+          others are smaller. Most sharks give birth to live young after internal fertilization. Some lay eggs, which
+          hatch outside the mother's body. Sharks are apex predators, feeding on a range of prey including fish,
+          seals,
+          and other marine animals.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic1"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic1" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/3Al4oytXF4U?si=AeQM8MbZ6k8rgD6T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Clownfish.jpg" alt="Clownfish#" style="width:100%">
+        <h4>Clownfish</h4>
+        <p> Clownfish are relatively small, usually around 2 to 4 inches in length. Clownfish exhibit protandry, where
+          the largest individual becomes female. They lay eggs on a suitable surface and guard them until hatching.
+          Clownfish are omnivores, consuming plankton and small invertebrates.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic2"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic2" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/-ZvOZg4Z5is?si=npKG6LCLEWn-lojJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Sea Turtle.jpeg" alt="Sea Turtle#" style="width:100%">
+        <h4>Sea Turtle</h4>
+        <p>Sea turtles vary in size, with the largest species, the leatherback, reaching lengths of up to 10 feet.
+          Female sea turtles return to beaches to lay their eggs. The gender of hatchlings is determined by
+          temperature.
+          Sea turtles are herbivores (green turtles) or omnivores (hawksbill turtles), eating seagrasses, algae,
+          jellyfish.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic3"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic3" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/s9vykTvZeXQ?si=IjVSTraH9SxyS9Xy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Octopus.jpg" alt="Octopus#" style="width:100%">
+        <h4>Octopus</h4>
+        <p> Octopus sizes vary widely; the giant Pacific octopus can reach lengths of over 20 feet, including its
+          arms.
+          Octopuses have short lifespans, reproducing only once. Males often die shortly after mating. Octopuses are
+          carnivorous, preying on crustaceans, small fish, and other marine animals.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic4"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic4" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/_dca-8_AFFk?si=1eqN9dyL9Or6pwXF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Penguin.jpg" alt="Penguin#" style="width:100%">
+        <h4>Penguin</h4>
+        <p>Penguins come in various sizes, with the emperor penguin being the largest, reaching around 3 to 4 feet in
+          height. Penguins lay eggs that they incubate on their feet. Both parents share incubation duties and care
+          for
+          the chicks. Penguins primarily eat fish, squid, and krill.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic5"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic5" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/1Lubb2iGNyM?si=N2dB-3RgvUxb0kut" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Seahorse.jpg" alt="Seahorse#" style="width:100%">
+        <h4>Seahorse</h4>
+        <p>Seahorses are small, typically around 1 to 12 inches in length. Male seahorses carry and give birth to the
+          young. Females deposit eggs in the male's brood pouch. Seahorses use their long snouts to suck up small
+          crustaceans and plankton.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic6"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic6" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/SBWyk3vUWUY?si=YP11o8tkv6FCvowE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Jellyfish.jpg" alt="Jellyfish#" style="width:100%">
+        <h4>Jellyfish</h4>
+        <p>Jellyfish sizes vary, with some being quite small and others having bell diameters exceeding 6 feet.
+          Jellyfish have complex life cycles, involving both asexual and sexual reproduction stages.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic7"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic7" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/8Yi4xTVL8lk?si=QjF9Egea27H0cwpB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Whale.jpg" alt="Whale#" style="width:100%">
+        <h4>Whale</h4>
+        <p>Whales come in different sizes. The blue whale, the largest animal on Earth, can reach lengths of up to 100
+          feet. Whales give birth to live young after a gestation period that varies by species. Whales are filter
+          feeders, consuming krill, plankton, and small fish.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic8"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic8" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/Ph1quoX4hLg?si=JxTxcGwXD2rK4pJG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Lobster.jpg" alt="Lobster#" style="width:100%">
+        <h4>Lobster</h4>
+        <p>Lobsters vary in size, with some species reaching lengths of over 3 feet. Female lobsters carry eggs
+          externally for several months until they hatch into larvae. Lobsters are scavengers, feeding on small fish,
+          mollusks, and detritus.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic9"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic9" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/Xzlrok31Fe0?si=UKiW0qdRPIaR8I71" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Manatee.jpg" alt="Manatee#" style="width:100%">
+        <h4>Manatee</h4>
+        <p>Manatees are large, typically ranging from 8 to 13 feet in length and weighing around 800 to 1,200 pounds.
+          Manatees have a slow reproductive rate, with a gestation period of about a year. Manatees are herbivores,
+          grazing on aquatic plants and seagrasses.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic10"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic10" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/xlWNeFR9-z8?si=D2qZ58xcW4706wsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+    <div class="column aquatic">
+      <div class="content">
+        <img src="images/Starfish.jpg" alt="Starfish#" style="width:100%">
+        <h4>Starfish</h4>
+        <p>Starfish sizes vary, with some species having arms that span up to 2 feet. Starfish can reproduce sexually
+          by
+          releasing eggs and sperm into the water, or asexually through regeneration. Starfish feed on a variety of
+          prey, such as small fish, crustaceans.</p>
+        
+          <div class="container mt-4">
+            <button type="button" class="btn btn-dark border-danger" data-bs-toggle="collapse" data-bs-target="#aquatic11"
+              style="border: 1px solid rgb(28, 183, 244) !important; color: rgb(28, 183, 244);">Learn More</button>
+  
+            <div id="aquatic11" class="collapse" id="collapse">
+              <iframe src="https://www.youtube.com/embed/I3sV_M8GUn0?si=oAQEHQ0JvWQ19DW9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+  
+          </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- footer ---------------------------------------->
+
+  <footer class="bg-dark text-white pt-5 pb-4">
+
+    <div class="container text-center text-md-left">
+
+      <div class="row text-center text-md-left">
+
+        <div class="col-md-3 col-lg-3 col-xl-3 max-auto mt-3 ">
+
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">ANIMALLO</h5>
+          <p>Wildlife blogging website Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo odio totam
+            itaque
+            nostrum</p>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Products</h5>
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">The providers</a>
+          </p>
+
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">Creativity</a>
+          </p>
+
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">Features</a>
+          </p>
+
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">About</a>
+          </p>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Useful Links</h5>
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">Your Account</a>
+          </p>
+
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">Become an Affiliates</a>
+          </p>
+
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">Ratings</a>
+          </p>
+
+          <p>
+            <a class="text-white" style="text-decoration: none;" href="#">Help</a>
+          </p>
+        </div>
+
+        <div class="col-md-4 col-lg-3 col-xl-3 max-auto mt-3">
+
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h5>
+          <p>
+            <i class="fas fa-home mr-3"></i> Kolkata, 700126, WB
+          </p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i> saklinwind53@gmail.com
+          </p>
+          <p>
+            <i class="fas fa-phone mr-3"></i> +91 9065000064
+          </p>
+          <p>
+            <i class="fas fa-print mr-3"></i> +91 6297050000
+          </p>
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="col-md-7 col-lg-8">
+
+          <p>Copyright &copy;2023 All rights reserved by:
+            <a href="#" style="text-decoration: none;">
+              <strong class="text-warning">ANIMALLO</strong>
+            </a>
+          </p>
+        </div>
+
+        <div class="col-md-5 col-lg-4">
+          <div class="text-center text-md-right">
+
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                  <i class="fab fa-google-plus"></i>
+                </a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://youtube.com/@Animallo-blogs?si=MTupw-uVgnM_vwV3" class="btn-floating btn-sm text-white"
+                  style="font-size: 23px;">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- script ------------------------------------------------------------------------------->
+  <script>
+    function myFunction() {
+      var element = document.body;
+      element.dataset.bsTheme =
+        element.dataset.bsTheme == "light" ? "dark" : "light";
+    }
+  </script>
+
+
+  <!-- bodyScript --------------------------------------------->
+  <script>
+    filterSelection("all") // Execute the function and show all columns
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("column");
+      if (c == "all") c = "";
+      // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+
+    // Show filtered elements
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+
+    // Hide elements that are not selected
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
